@@ -1,22 +1,29 @@
 #!/bin/sh
 
 menu=("Date & Time" "Calendar" "Delete" "Exit")
-answer=`zenity --list --column=Menu "${menu[@]}" --height 170`
+answer=`zenity --list --title="Menu" --column=Menu "${menu[@]}" --width=240 --height=220`
 
 case "$answer" in
     "Date & Time") zenity --info --title="Date & Time" --width=280 --height=100 \
-        --text="The system date &amp; time is: \n$(date)";;
+        --text="The system date &amp; time is: \n$(date)"
+                   bash cw2.sh;;
     "Calendar") zenity --calendar;;
     "Delete") FILE=`zenity --file-selection --title="Select a File"`
         case $? in
-         0) if zenity --question --width=280 --height=100 --title="Are you sure?" --text="Are you sure you would like to delete \"$FILE\"?"
+         0) if zenity --question --width=280 --height=100 --title="Are you sure?" \
+            --text="Are you sure you would like to delete \"$FILE\"?"
             then 
-                rm -rf $FILE
+                rm $FILE
                 echo "\"$FILE\" deleted successfully"
+                bash cw2.sh
             else
                 zenity --info --width=280 --height=100 --title="Delete unsuccessful" --text="File not deleted."
+                bash cw2.sh
             fi;;
-        -1) zenity --error --width=280 --height=100 --title="Error" --text="An unexpected error occurred";;
+
+         1) bash cw2.sh;;
+        -1) zenity --error --width=280 --height=100 --title="Error" --text="An unexpected error occurred"
+            bash cw2.sh;;
         esac;;
     "Exit") exit;;
 esac;
