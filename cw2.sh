@@ -7,7 +7,7 @@ case "$answer" in
     "Date & Time") zenity --info --title="Date & Time" --width=280 --height=100 \
         --text="The system date &amp; time is: \n$(date)"
                    bash cw2.sh;;
-    "Calendar") zenity --calendar;;
+    "Calendar") bash calendar.sh;;
     "Delete") FILE=`zenity --file-selection --title="Select a File"`
         case $? in
          0) if zenity --question --width=280 --height=100 --title="Are you sure?" \
