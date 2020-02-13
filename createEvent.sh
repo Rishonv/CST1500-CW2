@@ -1,4 +1,4 @@
-event=`zenity --forms --add-entry="Event Name" --add-calendar=Date --text="Add an event"`
+event=`zenity --forms --add-entry="Event Name" --add-calendar=Date --text="Add an event" --forms-date-format="%b %d %Y"`
 
 IFS='|' read -a arr <<< "$event"
 
