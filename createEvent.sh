@@ -1,9 +1,23 @@
-event=`zenity --forms --add-entry="Event Name" --add-calendar=Date --text="Add an event" --forms-date-format="%b %d %Y"`
+#! /bin/bash
 
-IFS='|' read -a arr <<< "$event"
+event=$(yad --form --field="Event name" "" --field="Date":DT "" --date-format="%d %B %Y" \
+ --field="Color":CB "red!blue!green!yellow")
 
-if [[ -z `echo ${arr[0]}` ]]; then
-	zenity --error --text="No name provided"
-else
-	echo "$event" >> events.txt
-fi
+case $? in
+	0)	IFS='|' read -ra arr <<< "$event"
+		for i in "${arr[@]}"; do
+			if [[ -z "$i" ]]; then
+				bash yad-update.sh
+				exit
+			fi
+		done
+		if grep -wq "${arr[0]}|${arr[1]}|*" events.txt; then
+			yad --image=gtk-dialog-error --text="The event already exists!"
+			bash yad-update.sh
+		else
+			echo -e "$event" >> events.txt
+			bash yad-update.sh
+		fi
+		;;
+	1)	bash yad-update.sh;;
+esac
