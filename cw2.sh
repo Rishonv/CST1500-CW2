@@ -10,7 +10,7 @@ function deleteFile() {
         0)  if yad --center --image=gtk-dialog-question --width=280 --height=100 \
                 --title="Are you sure?" --text="Are you sure you would like to delete \"$FILE\"?"
             then # Make sure they want to delete the file with an extra dialog
-                rm $FILE # If they choose yes then use 'rm' to delete the file
+                rm -f $FILE # If they choose yes then use 'rm' to delete the file
                 yad --center --image=gtk-dialog-info --width=280 --height=100 \
                 --title="File deleted successfully" --text="File deleted." 
                 # Display an info dialog saying that file was deleted

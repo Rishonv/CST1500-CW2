@@ -1,5 +1,2 @@
-avgrt|17 February 2020|red|
-jhghfd|07 February 2020|green|
-jhgf|06 February 2020|red|
-uujhn|14 February 2020|yellow|
-fghjt|26 February 2020|blue|
+te|11 February 2020|teal|
+wf|05 February 2020|orange|

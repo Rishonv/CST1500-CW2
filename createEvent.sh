@@ -1,9 +1,10 @@
 #! /bin/bash
 
 # Assign event to the result of the form
-event=$(yad --center --form --field="Event name" "" \
+event=`yad --center --form --field="Event name" "" \
 	--field="Date":DT "" --date-format="%d %B %Y" \
-	--field="Color":CB "red!blue!green!yellow")
+	--field="Color":CB "teal!orange!green!pink" \
+	--button="Create" --button="Go Back:1"`
 
 # Check what return value yad returned
 case $? in

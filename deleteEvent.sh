@@ -13,7 +13,7 @@ done < events.txt
 # Assign event to what event the user selects from the list
 event=`yad --center --width=300 --height=400 --list --column="Events" \
 	--text="Choose an event to delete" "${events[@]}" \
-	--button="Delete" --button="gtk-close:1" --separator=" "`
+	--button="Delete" --button="Go Back:1" --separator=" "`
 # Pass the events array as input to yad list
 
 # Check what return value yad returned

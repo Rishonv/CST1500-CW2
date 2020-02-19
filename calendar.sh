@@ -107,7 +107,7 @@ exec 3>&-
 
 # Create the parent notebook that holds all the other tabs
 yad --center --notebook --tab="Calendar" --tab="Events" --tab="Change Date" --key=$id \
-	--button="Add Event:2" --button="Delete Event:3" --button="gtk-close:1" \
+	--button="Add Event:2" --button="Delete Event:3" --button="Go Back:1" \
 	--width=700 --height=500 --title="Calendar"
 
 case $? in
